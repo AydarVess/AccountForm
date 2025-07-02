@@ -8,7 +8,9 @@
     "module": "ESNext",
     "target": "ES2023",
     "lib": ["ES2023", "dom"],
-    "types": ["vite/client", "node"]
+    "types": ["vite/client", "node"],
+    "allowImportingTsExtensions": true,
+    "noEmit": true
   },
   "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"]
 }
