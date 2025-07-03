@@ -9,7 +9,7 @@ export type Tag = {
 
 export type Account = {
   id: string;
-  tags: Tag[];
+  tagList: Tag[];
   type: AccountType;
   login: string;
   password: string | null;
@@ -19,7 +19,7 @@ export type Account = {
 export function blankAccount(): Account {
   return {
     id: crypto.randomUUID(),
-    tags: [],
+    tagList: [],
     type: AccountType.LOCAL,
     login: "",
     password: "",

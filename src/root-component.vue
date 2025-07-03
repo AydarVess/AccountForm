@@ -1,9 +1,9 @@
 <template>
-  Тут будет форма управления аккаунтами
+  <AccountForm />
 </template>
 
 <script setup lang="ts">
+import AccountForm from "@/components/AccountForm.vue";
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>
