@@ -16,6 +16,14 @@
           Для указания нескольких меток используйте символ <b>;</b>
         </Message>
 
+        <div class="account-form__content-header">
+          <span>Метки</span>
+          <span>Тип</span>
+          <span>Логин</span>
+          <span>Пароль</span>
+          <span></span>
+        </div>
+
         <AccountRow
           v-for="account in accountList"
           :key="account.id"
@@ -76,5 +84,13 @@ function deleteAccount(id: string) {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+}
+
+.account-form__content-header {
+  display: grid;
+  align-items: center;
+  gap: 0.5rem;
+  grid-template-columns: 1fr 150px 1fr 1fr 40px;
+  font-weight: 600;
 }
 </style>

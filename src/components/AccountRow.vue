@@ -1,10 +1,12 @@
 <template>
-  <div class="account-row">
+  <div
+    class="account-row"
+    :class="{ 'account-row--no-password': isNoPassword }"
+  >
     <InputText
       class="account-row__tag-list"
       :invalid="!isTagListValid"
       :modelValue="joinedTagList"
-      aria-describedby="Для указания нескольких меток используйте символ"
       placeholder="Метки"
       @blur="onTagListBlur"
     />
@@ -32,11 +34,7 @@
       class="account-row__password"
       :invalid="!isPasswordValid"
       v-model="form.password"
-      toggleMask
-      placeholder="Пароль"
-      maxlength="100"
-      @blur="onPasswordBlur"
-    />
+    ></Password>
 
     <Button
       class="account-row__delete"
@@ -82,6 +80,8 @@ const typeOptions = [
   { label: "Локальная", value: AccountType.LOCAL },
   { label: "LDAP", value: AccountType.LDAP },
 ];
+
+const isNoPassword = computed(() => form.type === AccountType.LDAP);
 
 // -----------------------------------------------------------------------------
 // VALIDATION
@@ -146,16 +146,17 @@ function remove() {
 
 <style scoped>
 .account-row {
-  display: flex;
+  display: grid;
   align-items: center;
   gap: 0.5rem;
+  grid-template-columns: 1fr 150px 1fr 1fr 40px;
 }
 
-.account-row__type {
-  width: 150px;
+.account-row--no-password .account-row__login {
+  grid-column: 3 / 5;
 }
 
-.account-row__delete {
-  flex: 0 0 auto;
+.account-row__password :deep(.p-inputtext) {
+  width: 100%;
 }
 </style>
